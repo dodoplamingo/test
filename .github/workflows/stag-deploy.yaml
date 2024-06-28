@@ -2,7 +2,7 @@ name: deploy-xquare
 
 on:
     push:
-        branches: develop
+        branches: main
 
 jobs:
     build:
@@ -30,7 +30,5 @@ jobs:
               uses: team-xquare/xquare-deployment-action@master
               with:
                   environment: stag
-                  access_key: ${{ secrets.ACCESS_KEY }}
+                  access_key: test
                   github_token: ${{ secrets.PERSONAL_ACCESS_TOKEN }}
-                  private_service: true
-                  critical_service: true
