@@ -1,0 +1,31 @@
+feign:
+  client:
+    config:
+      default:
+        connect-timeout: 2000
+        read-timeout: 2000
+  circuitbreaker:
+    enabled: true
+
+spring:
+  config:
+    import: "optional:configserver:${CLOUD_CONFIG_IMPORT_URL}"
+  cloud:
+    config:
+      name: application
+      profile: ${APPLICATION_PROFILE}
+  thymeleaf:
+    check-template-location: true
+    prefix: classpath:/templates
+    suffix: .html
+  main:
+    allow-bean-definition-overriding: true
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: health, refresh, busrefresh
+      base-path: /
+      path-mapping:
+        health: /
